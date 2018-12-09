@@ -4,21 +4,21 @@ This CAN module is capable of transmitting 8 analog readings and up to 16 digita
 readings. The module will send up to two messages with analog data and up to 1 message 
 with digital data depending on the amount of readings requested.
 
-## Data Packaging:
+### Data Packaging:
 
-### Analog: 
+#### Analog: 
 - Analog pins read from 0-1023, which requires two bytes to transmit. Because the 
 included CAN library requires data to be formatted as a uint8_t array 8 items long, analog 
 readings are split into two values prior to transmission. The two values must be 
 recombined on the receiving end. The high byte is sent first and the low byte is sent 
 second.
 
-### Digital: 
+#### Digital: 
 - Digital readings are packaged into two uint8_t variables (first two items of the 
 output array). The bits are set with bitwise operators and can be read back that way as 
 well (with & instead of |).
 
-## Configuration:
+### Configuration:
 
 The module can be configured to send anywhere from 0 to 8 analog readings and 0 to 16 
 digital readings with any valid message IDs via the macros at the top of the program file.
@@ -54,7 +54,7 @@ frequency.
 - CAN_BAUD_RATE sets the baud rate of the can port. The standard for automotive applications 
 is 500000 (500kbps).
 
-## Example:
+### Example:
 
 ```c++
 #define ANALOG_QUANTITY         5
@@ -71,29 +71,29 @@ The above settings will result in 5 analog readings being sent and 7 digital rea
 message IDs 150, 151, and 178 will be used for the two analog messages and single digital 
 message respectively.
 
-The following message output can be expected:
-`id 150 ide 1 rtr 0 dlc 8 data 00 D0 02 65 01 FF 00 00` <- four analog readings
-`id 151 ide 1 rtr 0 dlc 8 data 00 0B 00 00 00 00 00 00` <- one analog reading with padding
+The following message output can be expected:  
+`id 150 ide 1 rtr 0 dlc 8 data 00 D0 02 65 01 FF 00 00` <- four analog readings  
+`id 151 ide 1 rtr 0 dlc 8 data 00 0B 00 00 00 00 00 00` <- one analog reading with padding  
 `id 178 ide 1 rtr 0 dlc 8 data D7 F8 00 00 00 00 00 00` <- 7 digital readings padded
 
-These messages can be interpreted as follows:
-Message 150
-`00 D0 02 65 01 FF 00 00` <- pairs of hex values split in half
-`00D0 0265 01FF 0000` <- full hex values
-`208 613 511 0` <- analog readings
+These messages can be interpreted as follows:  
+Message 150  
+`00 D0 02 65 01 FF 00 00` <- pairs of hex values split in half  
+`00D0 0265 01FF 0000` <- full hex values  
+`208 613 511 0` <- analog readings  
 `A0 = 208`; `A1 = 613`; `A2 = 511`; `A3 = 0`
 
-Message 151
-`00 0b 00 00 00 00 00 00` <- pairs of hex values
-`000b 0000 0000 0000` <- full hex values
-`11` 0 0 0 <- one analog reading padded with zeroes
-`11` <- analog reading
+Message 151  
+`00 0b 00 00 00 00 00 00` <- pairs of hex values  
+`000b 0000 0000 0000` <- full hex values  
+`11` 0 0 0 <- one analog reading padded with zeroes  
+`11` <- analog reading  
 `A4 = 11`
 
-Message 178
-`D7 F8 00 00 00 00 00 00` <- two bytes with digital readings padded by zeroes
-`D7 F8` <- two bytes with digital readings, represented as hex
-`11010110 00000000` <- seven digital values padded with zeroes
-`1101011` <- seven digital values
+Message 178  
+`D7 F8 00 00 00 00 00 00` <- two bytes with digital readings padded by zeroes  
+`D7 F8` <- two bytes with digital readings, represented as hex  
+`11010110 00000000` <- seven digital values padded with zeroes  
+`1101011` <- seven digital values  
 `D0 = 1`; `D1 = 1`; `D2 = 0`; `D3 = 1`; `D4 = 0`; `D5 = 1`; `D6 = 1`
 

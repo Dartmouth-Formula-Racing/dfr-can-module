@@ -1,7 +1,9 @@
-
 /*
- * CAN port receiver example
- * Repeatedly transmits an array of test data to the CAN port
+ * CAN_Module | Pedal Pack
+ * Dartmouth Formula Racing
+ *
+ * Author: Jai K. Smith
+ * Date: December, 2018
  */
 
 #include <ASTCanLib.h>  

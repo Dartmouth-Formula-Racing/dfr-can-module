@@ -96,3 +96,4 @@ Message 178
 `11010110 00000000` <- seven digital values padded with zeroes
 `1101011` <- seven digital values
 `D0 = 1`; `D1 = 1`; `D2 = 0`; `D3 = 1`; `D4 = 0`; `D5 = 1`; `D6 = 1`
+

@@ -97,3 +97,6 @@ Message 178
 `1101011` <- seven digital values  
 `D0 = 1`; `D1 = 1`; `D2 = 0`; `D3 = 1`; `D4 = 0`; `D5 = 1`; `D6 = 1`
 
+### Hardware Pinout:
+
+![Hardware Pinout (SparkFun AST-CAN485 Dev Board)](pinout.png)

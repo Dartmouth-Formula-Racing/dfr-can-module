@@ -1,9 +1,11 @@
 /*
- * CAN_Module | Pedal Pack
+ * CAN_Module | SparkFun AST-CAN485 Dev Board
  * Dartmouth Formula Racing
  *
- * Author: Jai K. Smith
- * Date: December, 2018
+ * Transmits sensor readings over vehicle's CAN network.
+ *
+ * @author: Jai K. Smith
+ * @date: December, 2018
  */
 
 #include <ASTCanLib.h>  

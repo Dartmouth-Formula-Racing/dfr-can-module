@@ -38,7 +38,7 @@ sent with digital data. THIS QUANTITY MUST BE IN THE RANGE 0-16.
 analog data. This message contains the first half of the requested readings. This must be 
 given a valid value even if the message will not be sent (if no analog data was requested).
 - ANALOG2_ID determines the message ID to be associated with the second message containing 
-analog data. THis message contains the second half of the requested readings. This must be 
+analog data. This message contains the second half of the requested readings. This must be 
 given a valid value even if the message will not be sent (if less than 5 analog readings 
 were requested).
 - DIGITAL_ID determines the message ID of the message containing digital data. This must be 
